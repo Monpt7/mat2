@@ -15,12 +15,16 @@ function main_gen_key($a_mess)
     $incr_sequence = readline($a_mess[6]);
     $sequence = explode(',', $incr_sequence);
     $sum = is_super_increasing($sequence);
-    if ($sum == false)  return (set_out(0));
+    if ($sum == false)
+        return (set_out(0));
     (int) $m = readline("Entrez un entier m supérieur à $sum\n");
-    if ($m <= $sum) return (set_out2($sum, 1));
+    if ($m <= $sum)
+        return (set_out2($sum, 1));
     (int) $e = readline("Entrez un entier e supérieur à 1 et inférieur à $m\n");
-    if ($e <= 1 || $e >= $m)    return (set_out2($m, 2));
-    else if (!are_prime($e, $m))    return (set_out(3));
+    if ($e <= 1 || $e >= $m)
+        return (set_out2($m, 2));
+    else if (!are_prime($e, $m))
+        return (set_out(3));
     $inter_sequence = get_inter_sequence($sequence, $e, $m);
     $sorted_sequence = $inter_sequence;
     sort($sorted_sequence);
@@ -33,7 +37,8 @@ function main_gen_key($a_mess)
 function is_super_increasing($sequence)
 {
     $sum = 0;
-    foreach ($sequence as &$value) {
+    foreach ($sequence as &$value)
+    {
         if ($value <= $sum)
             return (false);
         $sum = $sum + $value;
@@ -55,9 +60,11 @@ function get_inter_sequence($sequence, $e, $m)
 function get_permutation($inter_sequence, $sorted_sequence)
 {
     $permutation = [];
-    foreach ($inter_sequence as &$inter_value) {
+    foreach ($inter_sequence as &$inter_value)
+    {
         $i = 0;
-        foreach ($sorted_sequence as &$sorted_value) {
+        foreach ($sorted_sequence as &$sorted_value)
+        {
             if ($sorted_value == $inter_value)
                 $permutation[] = $i + 1;
             $i++;

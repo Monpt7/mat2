@@ -27,4 +27,4 @@ while ($choice != 1 && $choice != 2 && $choice != 3)
 }
 
 clear_screen();
-$func_start[$choice - 1]($a_mess);
+$func_start[$choice - 1]($G_mess);

@@ -8,17 +8,8 @@
 // Last update Mon Jul 10 19:01:00 2017 VIALLON Louis
 //
 
-function clear_screen()
-{
-    $i = 0;
-    while ($i < 100)
-    {
-        echo "\n";
-        $i++;
-    }
-}
 
-$a_mess = array("Entrez le message chiffré\n",
+$G_mess = array("Entrez le message chiffré\n",
 	"Entrez votre clé secrète\n","Entrez votre permutation\n",
 	"Entrez m que vous aviez défini lors de la génération de la clé publique\n",
 	"Entrez e que vous aviez défini lors de la génération de la clé publique\n",
@@ -33,19 +24,29 @@ $a_mess = array("Entrez le message chiffré\n",
 	"Entrez un nombre entre 4 et ",
 	"\nVoici le message chiffré : ");
 
+function clear_screen()
+{
+    $i = 0;
+    while ($i < 100)
+    {
+        echo "\n";
+        $i++;
+    }
+}
 
-
-function	set_out($error_numb) {
+function	set_out($error_numb)
+{
 	$a_error = array("La suite entrée n'est pas supercroissante !\n",
 	"Votre entrée n'est pas inférieure à ",
 	"Votre entrée n'est pas supérieure à 1 et inférieure à ",
 	"Les entiers e et m ne sont pas premiers entre eux\n",
 	"Le nombre entré est inférieur à 4 ou supérieur à ");
 	echo $a_error[$error_numb];
-	return	false;
+	return	(false);
 }
 
-function	set_out2($i, $error_numb) {
+function	set_out2($i, $error_numb)
+{
 	$a_error = array("La suite entrée n'est pas supercroissante !\n",
 	"Votre entrée n'est pas supérieure à ",
 	"Votre entrée n'est pas supérieure à 1 et inférieure à ",

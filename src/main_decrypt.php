@@ -12,24 +12,23 @@ require_once('display.php');
 
 function main_decrypt($a_mess)
 {
-    $encrypted = readline($a_mess[0]);
-    $encrypted_arr = explode(',', $encrypted);
-    $secret = readline($a_mess[1]);
-    $secret_arr = explode(',', $secret);
-    $permutation = readline($a_mess[2]);
-    $permutation_arr = explode(',', $permutation);
+    $encrypted_arr = explode(',', readline($a_mess[0]));
+    $secret_arr = explode(',', readline($a_mess[1]));
+    $permutation_arr = explode(',', readline($a_mess[2]));
     $m = readline($a_mess[3]);
     $e = readline($a_mess[4]);
     $n = readline($a_mess[5]);
     $d = inv_modulo($e, $m);
     $res = [];
-    foreach ($encrypted_arr as &$value) {
+    foreach ($encrypted_arr as &$value) 
+    {
         $tmp = $value * $d;
         $res[] = my_modulo($tmp, $m);
     }
     $i = 0;
     $permuted = [];
-    while ($i < count($permutation_arr)) {
+    while ($i < count($permutation_arr))
+    {
         $nbr = $permutation_arr[$i] - 1;
         $permuted[$nbr] = $secret_arr[$i];
         $i++;
