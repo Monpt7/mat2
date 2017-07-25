@@ -17,8 +17,9 @@ function clear_screen()
         $i++;
     }
 }
-
-$a_mess = array("Entrez le message chiffré\n",
+function disp($error_numb)
+{
+	$a_mess = array("Entrez le message chiffré\n",
 	"Entrez votre clé secrète\n","Entrez votre permutation\n",
 	"Entrez m que vous aviez défini lors de la génération de la clé publique\n",
 	"Entrez e que vous aviez défini lors de la génération de la clé publique\n",
@@ -32,7 +33,8 @@ $a_mess = array("Entrez le message chiffré\n",
 	" chiffre à votre interlocuteur : ",
 	"Entrez un nombre entre 4 et ",
 	"\nVoici le message chiffré : ");
-
+	return ($a_mess[$error_numb]);
+}
 
 
 function	set_out($error_numb) {
@@ -42,7 +44,6 @@ function	set_out($error_numb) {
 	"Les entiers e et m ne sont pas premiers entre eux\n",
 	"Le nombre entré est inférieur à 4 ou supérieur à ");
 	echo $a_error[$error_numb];
-	return	false;
 }
 
 function	set_out2($i, $error_numb) {
@@ -52,6 +53,5 @@ function	set_out2($i, $error_numb) {
 	"Les entiers e et m ne sont pas premiers entre eux\n",
 	"Le nombre entré est inférieur à 4 ou supérieur à ");
 	echo $a_error[$error_numb]."".$i."\n";
-	return	(false);
 }
 

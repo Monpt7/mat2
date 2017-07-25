@@ -10,17 +10,17 @@
 
 require_once('display.php');
 
-function main_decrypt($a_mess)
+function main_decrypt()
 {
-    $encrypted = readline($a_mess[0]);
+    $encrypted = readline(disp(0));
     $encrypted_arr = explode(',', $encrypted);
-    $secret = readline($a_mess[1]);
+    $secret = readline(disp(1));
     $secret_arr = explode(',', $secret);
-    $permutation = readline($a_mess[2]);
+    $permutation = readline(disp(2));
     $permutation_arr = explode(',', $permutation);
-    $m = readline($a_mess[3]);
-    $e = readline($a_mess[4]);
-    $n = readline($a_mess[5]);
+    $m = readline(disp(3));
+    $e = readline(disp(4));
+    $n = readline(disp(5));
     $d = inv_modulo($e, $m);
     $res = [];
     foreach ($encrypted_arr as &$value) {
