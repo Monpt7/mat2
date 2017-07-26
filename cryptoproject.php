@@ -26,4 +26,5 @@ while ($choice != 1 && $choice != 2 && $choice != 3)
     echo "\n\n";
 }
 
-$func_start[$choice-1]();
+clear_screen();
+$func_start[$choice - 1]($G_mess);
