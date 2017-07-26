@@ -23,18 +23,43 @@ function main_decrypt()
     $n = readline(disp(5));
     $d = inv_modulo($e, $m);
     $res = [];
-    foreach ($encrypted_arr as &$value) {
+    foreach ($encrypted_arr as &$value)
+    {
         $tmp = $value * $d;
         $res[] = my_modulo($tmp, $m);
     }
     $i = 0;
     $permuted = [];
-    while ($i < count($permutation_arr)) {
+    while ($i < count($permutation_arr))
+    {
         $nbr = $permutation_arr[$i] - 1;
         $permuted[$nbr] = $secret_arr[$i];
         $i++;
     }
     ksort($permuted);
     $permuted = array_slice($permuted, 0, $n);
-    var_dump($permuted);
+    $sorted = $permuted;
+    rsort($sorted);
+    $bin_arr = [];
+    foreach ($res as &$value)
+    {
+        $tmp = "00000000";
+        foreach ($sorted as &$val_sort)
+        {
+            if ($value / $val_sort >= 1 && $value != 0)
+            {
+                $value = $value - $val_sort;
+                $key = array_search($val_sort, $permuted);
+                $tmp[$key] = "1";
+            }
+        }
+        $bin_arr[] = strrev(substr($tmp, 0, $n));
+    }
+    $bin_arr = str_split(implode('', $bin_arr), 8);
+    if (strlen(end($bin_arr)) != 8)
+        array_pop($bin_arr);
+    $fin_arr = [];
+    foreach ($bin_arr as &$bin)
+        $fin_arr[] = chr(bindec($bin));
+    echo "\nLe message dechiffré est : ".implode('', $fin_arr);
 }

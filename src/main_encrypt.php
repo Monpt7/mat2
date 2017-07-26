@@ -25,9 +25,9 @@ function main_encrypt()
         $binary_arr[] = $tmp;
     }
     $binary = implode('', $binary_arr);
-    $nbr_group = readline(disp(12).$nbr_terms_public_key."\n");                                                         //**
+    $nbr_group = readline(disp(12).$nbr_terms_public_key."\n");
     if ($nbr_group < 4 || $nbr_group > $nbr_terms_public_key)
-        return (set_out2($nbr_terms_public_key, 4));                                                                    //**
+        return (set_out2($nbr_terms_public_key, 4));
     $splited_binary = str_split($binary, $nbr_group);
     $last_entry = count($splited_binary) - 1;
     while (strlen($splited_binary[$last_entry]) < $nbr_group)

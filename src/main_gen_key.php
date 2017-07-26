@@ -12,7 +12,7 @@ require_once('src/display.php');
 
 function main_gen_key()
 {
-    $incr_sequence = readline(disp(6));
+    $incr_sequence = readline(disp(1));
     $sequence = explode(',', $incr_sequence);
     $sum = is_super_increasing($sequence);
     if ($sum == false)
