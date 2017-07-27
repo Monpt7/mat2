@@ -16,13 +16,13 @@ function are_prime($a, $b)
         else if ($a < $b)
             $b = $b - $a;
     }
-    return ($a == 1);
+    return $a == 1;
 }
 
 function my_modulo($int, $n)
 {
     if ($n == 0)
-        return (false);
+        return false;
     else 
     {
         $res = $int - $n * floor($int / $n);
@@ -37,10 +37,7 @@ function my_modulo($int, $n)
 function inv_modulo($a, $n)
 {
     if ($n == 0)
-    {
-        echo "va t'acheter des doigts !\n";
-        return (false);
-    }
+        return false;
     else
     {
         $res = $a;
@@ -54,9 +51,18 @@ function inv_modulo($a, $n)
             if ($res < 0)
                 $res = -$res;
         }
-        echo "va t'acheter des doigts !\n";
-        return (false);
+        return false;
     }
 }
 
-?>
+function is_super_increasing($sequence)
+{
+    $sum = 0;
+    foreach ($sequence as &$value) 
+    {
+        if ($value <= $sum)
+            return false;
+        $sum = $sum + $value;
+    }
+    return $sum;
+}

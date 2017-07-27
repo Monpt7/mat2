@@ -34,18 +34,6 @@ function main_gen_key()
     echo "Votre permutation : ".implode(',', $permutation)."\n".disp(9);
 }
 
-function is_super_increasing($sequence)
-{
-    $sum = 0;
-    foreach ($sequence as &$value) 
-    {
-        if ($value <= $sum)
-            return (false);
-        $sum = $sum + $value;
-    }
-    return ($sum);
-}
-
 function get_inter_sequence($sequence, $e, $m)
 {
     $inter_sequence = [];
@@ -55,7 +43,7 @@ function get_inter_sequence($sequence, $e, $m)
         if ($tmp != false)
             array_push($inter_sequence, $tmp);
     }
-    return ($inter_sequence);
+    return $inter_sequence;
 }
 
 function get_permutation($inter_sequence, $sorted_sequence)
@@ -71,5 +59,5 @@ function get_permutation($inter_sequence, $sorted_sequence)
             $i++;
         }
     }
-    return ($permutation);
+    return $permutation;
 }
