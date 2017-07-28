@@ -19,14 +19,18 @@ function main_gen_key()
     $sum = is_super_increasing($sequence);
     if ($sum == false)
         return set_out(0);
-    (int) $m = readline("Entrez un entier m supérieur à $sum\n");
+    $m = readline("Entrez un entier m supérieur à $sum\n");
+    if (!is_numeric($m))
+            return set_out(4);
     if ($m <= $sum)
         return set_out2($sum, 1);
-    (int) $e = readline("Entrez un entier e supérieur à 1 et inférieur à $m\n");
+    $e = readline("Entrez un entier e supérieur à 1 et inférieur à $m\n");
+    if (!is_numeric($e))
+            return set_out(4);
     if ($e <= 1 || $e >= $m)
         return set_out2($m, 2);
     else if (!are_prime($e, $m))
-        return set_out(3);
+        return set_out(1);
     $inter_sequence = get_inter_sequence($sequence, $e, $m);
     $sorted_sequence = $inter_sequence;
     sort($sorted_sequence);

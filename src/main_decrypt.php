@@ -36,9 +36,7 @@ function main_decrypt()
     $bin_arr = get_bin_arr($res, $sorted, $permuted, $n);
     if (strlen(end($bin_arr)) != 8)
         array_pop($bin_arr);
-    $fin_arr = [];
-    foreach ($bin_arr as &$bin)
-        $fin_arr[] = chr(bindec($bin));
+    $fin_arr = get_fin_arr($bin_arr);
     echo "\nLe message dechiffré est : ".implode('', $fin_arr)."\n";
 }
 
