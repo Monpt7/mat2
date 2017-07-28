@@ -13,7 +13,6 @@ require_once('src/main_encrypt.php');
 require_once('src/main_decrypt.php');
 require_once('src/general.php');
 require_once('src/display.php');
-require_once('src/get_sequence.php');
 
 function main()
 {
