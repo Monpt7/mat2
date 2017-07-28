@@ -20,7 +20,8 @@ function clear_screen()
 function disp($error_numb)
 {
 	$a_mess = array("Entrez le message chiffré\n",
-	"Entrez votre clé secrète\n","Entrez votre permutation\n",
+	"Entrez votre clé secrète (suite supercroissante) de la forme : 1,2,5..\n",
+	"Entrez votre permutation\n",
 	"Entrez m que vous aviez défini lors de la génération de la public key\n",
 	"Entrez e que vous aviez défini lors de la génération de la public key\n",
 	"Entrez n qui vous a été communiqué avec le message chiffré\n",
@@ -39,11 +40,10 @@ function disp($error_numb)
 
 function	set_out($error_numb) {
 	$a_error = array("La suite entrée n'est pas supercroissante !\n",
-	"Votre entrée n'est pas inférieure à ",
-	"Votre entrée n'est pas supérieure à 1 et inférieure à ",
 	"Les entiers e et m ne sont pas premiers entre eux\n",
-	"Le nombre entré est inférieur à 4 ou supérieur à ",
-	"Votre clé privée et votre permutation n'ont pas la même taille\n");
+	"Votre clé publique ne peut être composé de moins de 4 termes\n",
+	"Votre clé privée et votre permutation n'ont pas la même taille\n",
+	"Votre entrée ne comporte pas que des chiffres\n");
 	echo $a_error[$error_numb];
 }
 

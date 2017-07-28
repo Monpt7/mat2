@@ -14,6 +14,8 @@ function main_gen_key()
 {
     $incr_sequence = readline(disp(1));
     $sequence = explode(',', $incr_sequence);
+        if (count($sequence) <= 3)
+            return set_out(2);
     $sum = is_super_increasing($sequence);
     if ($sum == false)
         return set_out(0);

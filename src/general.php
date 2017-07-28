@@ -60,6 +60,8 @@ function is_super_increasing($sequence)
     $sum = 0;
     foreach ($sequence as &$value) 
     {
+        if (!is_numeric($value))
+            return false;
         if ($value <= $sum)
             return false;
         $sum = $sum + $value;
