@@ -74,4 +74,5 @@ function get_fin_arr($bin_arr)
     $fin_arr = [];
     foreach ($bin_arr as &$bin)
         $fin_arr[] = chr(bindec($bin));
+    return $fin_arr;
 }
