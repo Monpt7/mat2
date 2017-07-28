@@ -19,7 +19,7 @@ function main()
     $func_start = array("main_gen_key","main_encrypt","main_decrypt");
     $pick = 0;
     $str = "";
-    while ($pick != 1 && $pick != 2 && $pick != 3 && strlen($str) != 1)
+    while (($pick != 1 && $pick != 2 && $pick != 3) || strlen($str) != 1)
     {
         echo "Bonjour, bienvenue sur cryptoproject\n\n";
         echo "1 - Générer une clé publique\n";
