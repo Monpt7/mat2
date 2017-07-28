@@ -1,5 +1,7 @@
 # Documentation CMG-MAT2
 
+**Version de PHP : 7.1.7**
+
 Notre projet peut être lancé grâce à la commande : `php cryptoproject.php` lorsque l'on se trouve à la racine du projet.
 
 Le programme va afficher un menu avec un choix de fonctionnalité à executer, numérotées de 1 à 3. Cette documentation a pour but de les expliquer une à une.
