@@ -12,22 +12,34 @@ require_once('display.php');
 
 function main_decrypt()
 {
-    $encrypted = readline(disp(0));
-    $encrypted_arr = explode(',', $encrypted);
-    $secret = readline(disp(1));
-    $secret_arr = explode(',', $secret);
-    $permutation = readline(disp(2));
-    $permutation_arr = explode(',', $permutation);
+    $encrypted_arr = explode(',', readline(disp(0)));
+    $secret_arr = explode(',', readline(disp(1)));
+    if (!is_super_increasing($secret_arr))
+        return set_out(0);
+    $permutation_arr = explode(',', readline(disp(2)));
+    if (count($permutation_arr) != count($secret_arr))
+        return set_out(5);
     $m = readline(disp(3));
     $e = readline(disp(4));
-    $n = readline(disp(5));
+    if ($e > $m || $e < 1)
+        return set_out2($m, 2);
+    $n = get_n($m, $e);
     $d = inv_modulo($e, $m);
-    $res = [];
-    foreach ($encrypted_arr as &$value)
-    {
-        $tmp = $value * $d;
-        $res[] = my_modulo($tmp, $m);
-    }
+    $res = get_res_d($encrypted_arr, $d, $m);
+    $permuted = get_permuted($n, $permutation_arr, $secret_arr);
+    $sorted = $permuted;
+    rsort($sorted);
+    $bin_arr = get_bin_arr($res, $sorted, $permuted, $n);
+    if (strlen(end($bin_arr)) != 8)
+        array_pop($bin_arr);
+    $fin_arr = [];
+    foreach ($bin_arr as &$bin)
+        $fin_arr[] = chr(bindec($bin));
+    echo "\nLe message dechiffré est : ".implode('', $fin_arr)."\n";
+}
+
+function get_permuted($n, $permutation_arr, $secret_arr)
+{
     $i = 0;
     $permuted = [];
     while ($i < count($permutation_arr))
@@ -37,9 +49,11 @@ function main_decrypt()
         $i++;
     }
     ksort($permuted);
-    $permuted = array_slice($permuted, 0, $n);
-    $sorted = $permuted;
-    rsort($sorted);
+    return array_slice($permuted, 0, $n);
+}
+
+function get_bin_arr($res, $sorted, $permuted, $n)
+{
     $bin_arr = [];
     foreach ($res as &$value)
     {
@@ -55,11 +69,26 @@ function main_decrypt()
         }
         $bin_arr[] = strrev(substr($tmp, 0, $n));
     }
-    $bin_arr = str_split(implode('', $bin_arr), 8);
-    if (strlen(end($bin_arr)) != 8)
-        array_pop($bin_arr);
-    $fin_arr = [];
-    foreach ($bin_arr as &$bin)
-        $fin_arr[] = chr(bindec($bin));
-    echo "\nLe message dechiffré est : ".implode('', $fin_arr);
+    return str_split(implode('', $bin_arr), 8);
+}
+
+function get_n($m, $e)
+{
+    $n = readline(disp(5));
+    if ($n < 4 || $n > 8)
+        return set_out2(8, 3);
+    if (!are_prime($e, $m))
+        return set_out(3);
+    return $n;
+}
+
+function get_res_d($encrypted_arr, $d, $m)
+{
+    $res = [];
+    foreach ($encrypted_arr as &$value)
+    {
+        $tmp = $value * $d;
+        $res[] = my_modulo($tmp, $m);
+    }
+    return $res;
 }
