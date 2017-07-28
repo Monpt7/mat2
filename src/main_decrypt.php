@@ -18,9 +18,13 @@ function main_decrypt()
         return set_out(0);
     $permutation_arr = explode(',', readline(disp(2)));
     if (count($permutation_arr) != count($secret_arr))
-        return set_out(5);
+        return set_out(3);
     $m = readline(disp(3));
+    if (!is_numeric($m))
+            return set_out(4);
     $e = readline(disp(4));
+    if (!is_numeric($e))
+            return set_out(4);
     if ($e > $m || $e < 1)
         return set_out2($m, 2);
     $n = get_n($m, $e);
@@ -32,9 +36,7 @@ function main_decrypt()
     $bin_arr = get_bin_arr($res, $sorted, $permuted, $n);
     if (strlen(end($bin_arr)) != 8)
         array_pop($bin_arr);
-    $fin_arr = [];
-    foreach ($bin_arr as &$bin)
-        $fin_arr[] = chr(bindec($bin));
+    $fin_arr = get_fin_arr($bin_arr);
     echo "\nLe message dechiffré est : ".implode('', $fin_arr)."\n";
 }
 
@@ -78,7 +80,7 @@ function get_n($m, $e)
     if ($n < 4 || $n > 8)
         return set_out2(8, 3);
     if (!are_prime($e, $m))
-        return set_out(3);
+        return set_out(1);
     return $n;
 }
 

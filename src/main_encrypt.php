@@ -14,7 +14,7 @@ function main_encrypt()
 {
     $public_arr = explode(',', readline(disp(6)));
     $nbr_terms_public_key = count($public_arr);
-    $to_encrypt = readline(disp(0));
+    $to_encrypt = readline(disp(7));
     $binary_arr = [];
     foreach (str_split($to_encrypt) as &$char) 
     {
