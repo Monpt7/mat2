@@ -16,15 +16,15 @@ function main_gen_key()
     $sequence = explode(',', $incr_sequence);
     $sum = is_super_increasing($sequence);
     if ($sum == false)
-        return (set_out(0));
+        return set_out(0);
     (int) $m = readline("Entrez un entier m supérieur à $sum\n");
     if ($m <= $sum)
-        return (set_out2($sum, 1));
+        return set_out2($sum, 1);
     (int) $e = readline("Entrez un entier e supérieur à 1 et inférieur à $m\n");
     if ($e <= 1 || $e >= $m)
-        return (set_out2($m, 2));
+        return set_out2($m, 2);
     else if (!are_prime($e, $m))
-        return (set_out(3));
+        return set_out(3);
     $inter_sequence = get_inter_sequence($sequence, $e, $m);
     $sorted_sequence = $inter_sequence;
     sort($sorted_sequence);
