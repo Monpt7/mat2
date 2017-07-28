@@ -74,8 +74,67 @@ Nous allons voir ça de suite.
 Pour générer une clé publique on nous demande de préciser une clé privée, qui est une suite super croissante dont les termes sont séparés par des virgules.
 
 Voici les erreurs possibles pour cette étape :
-- **Suite non supercroissante** : Le programme s'arrête et affiche un message d'erreur.
-- **Suite avec des termes négatifs** : Le programme s'arrête et affiche un message d'erreur.
-- **Suite non délimitée avec '`,`'** : Le programme s'arrête et affiche un message d'erreur.
-- **Suite ne comportant pas que des nombres** : Le programme s'arrête et affiche un message d'erreur.
-- **Suite comportant moins de 4 termes** : Le programme s'arrête et affiche un message d'erreur.
+- **Suite non supercroissante**
+- **Suite avec des termes négatifs**
+- **Suite non délimitée avec '`,`'**
+- **Suite ne comportant pas que des nombres**
+- **Suite comportant moins de 4 termes**
+
+Pour les entiers m et e, m doit être supérieur à la somme des termes de la clé privée et e compris entre 1 et m. Ils doivent être premiers entre eux.
+
+Voici les erreurs possibles pour cette étape :
+- **Pas un entier**
+- **L'entrée ne comporte pas que des chiffres**
+- **m inférieur à la somme des termes de la clé privée**
+- **e est inférieur à 1**
+- **e est supérieur à m**
+- **e et m ne sont pas premiers entre eux**
+
+### Chiffrer un message
+Pour chiffrer un message, on nous demande dans un premier temps la clé publique, suite dont les termes sont séparés par des virgules.
+
+Voici les erreurs possibles pour cette étape :
+- **Suite avec des termes négatifs**
+- **Suite non délimitée avec '`,`'**
+- **Suite ne comportant pas que des nombres**
+- **Suite comportant moins de 4 termes**
+
+Ensuite le message à chiffrer, pas de gestion d'erreur, on peut rentrer n'importe quoi (même une chaîne vide).
+
+Et pour finir, on entre un entier n qui doit être compris entre 4 et le nombre de terme de la clé publique.
+
+Voici les erreurs possibles pour cette étape :
+- **Pas un entier**
+- **L'entrée ne comporte pas que des chiffres**
+- **n inférieur à 4**
+- **n supérieur à la somme des termes de la clé publique**
+
+### Déchiffrer un message
+Message chiffré : on entre le message chiffré de cette forme : `9232,40931,15743,27552,22611,26320`.
+
+Voici les erreurs possibles pour cette étape :
+- **Suite avec des termes négatifs**
+- **Suite non délimitée avec '`,`'**
+- **Suite ne comportant pas que des nombres**
+
+On entre la clé privée sous cette forme : `1,42,100,255,512,1337,3675`.
+
+Voici les erreurs possibles pour cette étape :
+- **Suite non supercroissante**
+- **Suite avec des termes négatifs**
+- **Suite non délimitée avec '`,`'**
+- **Suite ne comportant pas que des nombres**
+- **Suite comportant moins de 4 termes**
+
+On rentre la permutation sous la forme suivante : `1,7,10,8,4`
+
+Voici les erreurs possibles pour cette étape :
+- **Suite avec des termes négatifs**
+- **Suite non délimitée avec '`,`'**
+- **Suite ne comportant pas que des nombres**
+
+Pour les entiers `m`, `e` et `n` on gère les erreurs suivantes :
+- **Pas un entier**
+- **L'entrée ne comporte pas que des chiffres**
+- **n inférieur à 4**
+- **n supérieur à la somme des termes de la clé privée**

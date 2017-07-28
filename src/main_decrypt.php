@@ -27,7 +27,7 @@ function main_decrypt()
             return set_out(4);
     if ($e > $m || $e < 1)
         return set_out2($m, 2);
-    $n = get_n($m, $e);
+    $n = get_n($m, $e, $$secret_arr);
     $d = inv_modulo($e, $m);
     $res = get_res_d($encrypted_arr, $d, $m);
     $permuted = get_permuted($n, $permutation_arr, $secret_arr);
@@ -74,11 +74,11 @@ function get_bin_arr($res, $sorted, $permuted, $n)
     return str_split(implode('', $bin_arr), 8);
 }
 
-function get_n($m, $e)
+function get_n($m, $e, $secret_arr)
 {
     $n = readline(disp(5));
-    if ($n < 4 || $n > 8)
-        return set_out2(8, 3);
+    if ($n < 4 || $n > count($secret_arr))
+        return set_out2(count($secret_arr), 3);
     if (!are_prime($e, $m))
         return set_out(1);
     return $n;
